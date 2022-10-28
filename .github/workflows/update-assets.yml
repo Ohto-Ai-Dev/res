@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      leaveDaysBadge: assets/course-in-school/leave_days_badge.svg
+      target_leave_days_badge: assets/course-in-school/leave_days_badge.svg
       target_last_modify_time_badge: assets/course-in-school/last_modify_time_badge.svg
     steps:
       - name: Checkout
@@ -27,10 +27,10 @@ jobs:
           date_end_second=`date -d"$date_end" +"%s"`
           interval=$[$date_end_second-$date_start_second]
           interval_days=$[$interval/86400]
-          mkdir -p `dirname ${{target_leave_days_badge}}`
-          wget "https://img.shields.io/badge/leave-${interval_days}_days-green.svg?style=for-the-badge" -O ${{target_leave_days_badge}}
-          mkdir -p `dirname ${{target_last_modify_time_badge}}`
-          wget "https://img.shields.io/badge/last_modify-${last_modify_time_badge_content}-orange.svg?style=for-the-badge" -O ${{target_last_modify_time_badge}}
+          mkdir -p `dirname ${{env.target_leave_days_badge}}`
+          wget "https://img.shields.io/badge/leave-${interval_days}_days-green.svg?style=for-the-badge" -O ${{env.target_leave_days_badge}}
+          mkdir -p `dirname ${{env.target_last_modify_time_badge}}`
+          wget "https://img.shields.io/badge/last_modify-${last_modify_time_badge_content}-orange.svg?style=for-the-badge" -O ${{env.target_last_modify_time_badge}}
       - name: Generate Snake
         uses: Platane/snk@master
         id: snake-gif
