@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      target_leave_days_badge: assets/course-in-school/leave_days_badge.svg
+      leaveDaysBadge: assets/course-in-school/leave_days_badge.svg
       target_last_modify_time_badge: assets/course-in-school/last_modify_time_badge.svg
     steps:
       - name: Checkout
