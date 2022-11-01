@@ -4,7 +4,8 @@ on:
     - cron: "0 0/3 * * *"
   workflow_dispatch:
 jobs:
-  build:
+  build-for-course-in-school:
+    name: Assets of course-in-school
     runs-on: ubuntu-latest
     env:
       leave_date: "2021-06-23"
@@ -28,16 +29,27 @@ jobs:
           wget "https://img.shields.io/badge/leave-${interval_days}_days-green.svg?style=for-the-badge" -O ${{env.target_leave_days_badge}}
           mkdir -p `dirname ${{env.target_last_modify_time_badge}}`
           wget "https://img.shields.io/badge/last_modify-${last_modify_time_badge_content}-orange.svg?style=for-the-badge" -O ${{env.target_last_modify_time_badge}}
-      - name: Generate Snake
-        uses: Platane/snk@master
-        id: snake-gif
-        with:
-          github_user_name: Ohto-Ai
-          gif_out_path: assets/Ohto-Ai/github-contribution-grid-snake.gif
-          svg_out_path: assets/Ohto-Ai/github-contribution-grid-snake.svg
       - name: Push to GitHub
         uses: EndBug/add-and-commit@v7.2.1
         with:
           branch: master
-          message: "Update Assets"
+          default_author: user_info
+  build-for-Ohto-Ai:
+    name: Assets of Ohto-Ai
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        owner: ['Ohto-Ai', 'beiklive']
+    steps:
+      - name: Generate Snake
+        uses: Platane/snk@master
+        id: snake-gif
+        with:
+          github_user_name: ${{ matrix.owner }}
+          gif_out_path: assets/${{ matrix.owner }}/github-contribution-grid-snake.gif
+          svg_out_path: assets/${{ matrix.owner }}/github-contribution-grid-snake.svg
+      - name: Push to GitHub
+        uses: EndBug/add-and-commit@v7.2.1
+        with:
+          branch: master
           default_author: user_info
