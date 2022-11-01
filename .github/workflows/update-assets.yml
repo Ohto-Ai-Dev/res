@@ -33,6 +33,7 @@ jobs:
         uses: EndBug/add-and-commit@v7.2.1
         with:
           branch: master
+          message: Update Assets
           pull: '--rebase'
           default_author: user_info
   build-for-Ohto-Ai:
@@ -55,5 +56,6 @@ jobs:
         uses: EndBug/add-and-commit@v7.2.1
         with:
           branch: master
+          message: Update Assets
           pull: '--rebase'
           default_author: user_info
