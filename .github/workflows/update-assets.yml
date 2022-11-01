@@ -1,13 +1,13 @@
 name: Update Assets
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 0/3 * * *"
   workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      leave_date: 2021-06-23
+      leave_date: "2021-06-23"
       time_zone_diff: 8
       target_leave_days_badge: assets/course-in-school/leave_days_badge.svg
       target_last_modify_time_badge: assets/course-in-school/last_modify_time_badge.svg
