@@ -29,6 +29,9 @@ jobs:
           wget "https://img.shields.io/badge/leave-${interval_days}_days-green.svg?style=for-the-badge" -O ${{env.target_leave_days_badge}}
           mkdir -p `dirname ${{env.target_last_modify_time_badge}}`
           wget "https://img.shields.io/badge/last_modify-${last_modify_time_badge_content}-orange.svg?style=for-the-badge" -O ${{env.target_last_modify_time_badge}}
+      - run: |
+          git status
+        
       - name: Push to GitHub
         uses: EndBug/add-and-commit@v7
         with:
