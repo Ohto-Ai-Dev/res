@@ -30,7 +30,7 @@ jobs:
           mkdir -p `dirname ${{env.target_last_modify_time_badge}}`
           wget "https://img.shields.io/badge/last_modify-${last_modify_time_badge_content}-orange.svg?style=for-the-badge" -O ${{env.target_last_modify_time_badge}}
       - name: Push to GitHub
-        uses: EndBug/add-and-commit@v9
+        uses: EndBug/add-and-commit@v7
         with:
           add: -A
           message: Update Assets
@@ -53,7 +53,7 @@ jobs:
           gif_out_path: assets/${{ matrix.owner }}/github-contribution-grid-snake.gif
           svg_out_path: assets/${{ matrix.owner }}/github-contribution-grid-snake.svg
       - name: Push to GitHub
-        uses: EndBug/add-and-commit@v9
+        uses: EndBug/add-and-commit@v7
         with:
           add: -A
           message: Update Assets
