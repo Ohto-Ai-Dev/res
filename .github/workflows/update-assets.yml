@@ -29,13 +29,10 @@ jobs:
           wget "https://img.shields.io/badge/leave-${interval_days}_days-green.svg?style=for-the-badge" -O ${{env.target_leave_days_badge}}
           mkdir -p `dirname ${{env.target_last_modify_time_badge}}`
           wget "https://img.shields.io/badge/last_modify-${last_modify_time_badge_content}-orange.svg?style=for-the-badge" -O ${{env.target_last_modify_time_badge}}
-      - run: |
-          git status
-        
       - name: Push to GitHub
-        uses: EndBug/add-and-commit@v7
+        uses: EndBug/add-and-commit@v7.2.1
         with:
-          add: -A
+          branch: master
           message: Update Assets
           pull: '--rebase'
           default_author: user_info
@@ -47,7 +44,7 @@ jobs:
         owner: ['Ohto-Ai', 'beiklive']
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2.3.4
       - name: Generate Snake
         uses: Platane/snk@master
         id: snake-gif
@@ -56,9 +53,9 @@ jobs:
           gif_out_path: assets/${{ matrix.owner }}/github-contribution-grid-snake.gif
           svg_out_path: assets/${{ matrix.owner }}/github-contribution-grid-snake.svg
       - name: Push to GitHub
-        uses: EndBug/add-and-commit@v7
+        uses: EndBug/add-and-commit@v7.2.1
         with:
-          add: -A
+          branch: master
           message: Update Assets
           pull: '--rebase'
           default_author: user_info
