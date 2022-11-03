@@ -32,7 +32,6 @@ jobs:
       - name: Push to GitHub
         uses: EndBug/add-and-commit@latest
         with:
-          branch: master
           message: Update Assets
           pull: '--rebase'
           default_author: user_info
@@ -55,7 +54,6 @@ jobs:
       - name: Push to GitHub
         uses: EndBug/add-and-commit@latest
         with:
-          branch: master
           message: Update Assets
           pull: '--rebase'
           default_author: user_info
