@@ -1,1 +1,1 @@
-# res
+# Public assets for Ohto-Ai
