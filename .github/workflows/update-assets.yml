@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        owner: ['Ohto-Ai', 'beiklive']
+        owner: [Ohto-Ai, beiklive, zhouhuan666, Aakjaeryoung]
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.4
