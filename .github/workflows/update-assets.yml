@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Generate Image Assets
         run: |
-          # rm -rf assets/*
+          rm -rf assets/${{ matrix.owner }}
           date_start=${{env.leave_date}}
           time_zone_diff=${{env.time_zone_diff}}
           last_modify_time_badge_content=`date -d "$time_zone_diff hours" +"%Y--%m--%d_%H:%M:%S"`
