@@ -41,6 +41,7 @@ jobs:
     name: Assets of Ohto-Ai
     runs-on: ubuntu-latest
     strategy:
+      max-parallel: 1
       matrix:
         owner: [ohto-ai, beiklive, zhouhuan666, Aakjaeryoung, XSSaGY]
     steps:
