@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assets Repository Admin - 申请管理</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Assets Repository 管理后台</h1>
+            <p>管理用户申请并预览邮件模板</p>
+        </header>
+
+        <main>
+            <section class="requests-section">
+                <h2>待处理申请</h2>
+                <div class="requests-list">
+                    <div class="request-item" data-request-id="1">
+                        <div class="request-info">
+                            <h3>用户申请 - john_doe</h3>
+                            <p><strong>GitHub用户名:</strong> john_doe</p>
+                            <p><strong>邮箱:</strong> john.doe@example.com</p>
+                            <p><strong>申请时间:</strong> 2024-01-15 10:30</p>
+                            <p><strong>申请理由:</strong> 希望加入贡献蛇形图生成系统，用于个人GitHub档案展示</p>
+                        </div>
+                        <div class="request-actions">
+                            <button class="btn btn-approve" onclick="showEmailPreview(1, 'approve')">批准并预览邮件</button>
+                            <button class="btn btn-reject" onclick="showEmailPreview(1, 'reject')">拒绝并预览邮件</button>
+                        </div>
+                    </div>
+
+                    <div class="request-item" data-request-id="2">
+                        <div class="request-info">
+                            <h3>用户申请 - alice_smith</h3>
+                            <p><strong>GitHub用户名:</strong> alice_smith</p>
+                            <p><strong>邮箱:</strong> alice.smith@company.com</p>
+                            <p><strong>申请时间:</strong> 2024-01-16 14:20</p>
+                            <p><strong>申请理由:</strong> 作为开源贡献者，希望获得个性化的GitHub贡献图表</p>
+                        </div>
+                        <div class="request-actions">
+                            <button class="btn btn-approve" onclick="showEmailPreview(2, 'approve')">批准并预览邮件</button>
+                            <button class="btn btn-reject" onclick="showEmailPreview(2, 'reject')">拒绝并预览邮件</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 邮件预览模态窗口 -->
+            <div id="emailPreviewModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="modalTitle">邮件预览</h2>
+                        <span class="close" onclick="closeEmailPreview()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="email-preview">
+                            <div class="email-header">
+                                <p><strong>收件人:</strong> <span id="emailTo"></span></p>
+                                <p><strong>主题:</strong> <span id="emailSubject"></span></p>
+                                <p><strong>发件人:</strong> Assets Repository Admin &lt;admin@assets.example.com&gt;</p>
+                            </div>
+                            <div class="email-content">
+                                <div id="emailBody"></div>
+                            </div>
+                        </div>
+                        <div class="modal-actions">
+                            <button class="btn btn-primary" onclick="sendEmail()">发送邮件</button>
+                            <button class="btn btn-secondary" onclick="editTemplate()">编辑模板</button>
+                            <button class="btn btn-secondary" onclick="closeEmailPreview()">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 编辑模板模态窗口 -->
+            <div id="editTemplateModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>编辑邮件模板</h2>
+                        <span class="close" onclick="closeEditTemplate()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <form id="templateForm">
+                            <div class="form-group">
+                                <label for="templateSubject">邮件主题:</label>
+                                <input type="text" id="templateSubject" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="templateBody">邮件内容:</label>
+                                <textarea id="templateBody" class="form-control" rows="15"></textarea>
+                            </div>
+                            <div class="modal-actions">
+                                <button type="button" class="btn btn-primary" onclick="saveTemplate()">保存并预览</button>
+                                <button type="button" class="btn btn-secondary" onclick="closeEditTemplate()">取消</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
